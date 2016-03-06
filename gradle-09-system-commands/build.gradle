@@ -11,22 +11,34 @@ task list {
 			'ls', '-alh'
 		].execute()
 	}
-	println "============"
+	println '============='
+	println "LIST"
 	println r.text
-	println "============"
 }
 
 // more in https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Exec.html
-task list2(type:Exec) {
-	workingDir './'
+task list2 (type:Exec){
+	doFirst {
+		workingDir './'
 
-	if(Os.isFamily(Os.FAMILY_WINDOWS)) {
-		commandLine 'dir'
-	}else{
-		commandLine 'ls', '-alh'
+		//store the output instead of printing to the console:
+		standardOutput = new ByteArrayOutputStream()
+
+		if(Os.isFamily(Os.FAMILY_WINDOWS)) {
+			commandLine 'dir'
+		}else{
+			commandLine 'ls', '-alh'
+		}
+
+		ext.output = {
+			return standardOutput
+		}
+		return standardOutput
 	}
+}
 
-	//store the output instead of printing to the console:
-//	standardOutput = new ByteArrayOutputStream()
-
+task printList2 (dependsOn: list2)<<{
+	println '============='
+	println 'the output is'
+	println list2.ext.output().toString()
 }
