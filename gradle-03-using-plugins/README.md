@@ -1,0 +1,1 @@
+A simple example of the basic usage of plugins with gradle
