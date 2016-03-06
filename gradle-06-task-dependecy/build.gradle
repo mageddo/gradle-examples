@@ -18,4 +18,5 @@ task cleanOther << {
 	println "I want to clean up and compile before running!"
 }
 
+// other example of how to set dependsOn
 cleanOther.dependsOn clean, compile 

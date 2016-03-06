@@ -1,0 +1,10 @@
+defaultTasks 'clean'
+
+task clean {
+	doLast {
+		println 'Executing the clean task'
+	}
+}
+
+clean.doFirst { println 'Another action applied to the "clean" task' }
+clean << { println 'Another doLast action is also applied' } 
