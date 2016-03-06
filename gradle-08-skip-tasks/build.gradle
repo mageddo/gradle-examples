@@ -1,0 +1,14 @@
+defaultTasks 'eclipse'
+
+task eclipse << {
+	println 'Hello Eclipse'
+}
+
+eclipse.onlyIf { 
+//	project.hasProperty('usingEclipse') 
+	return false
+}
+
+eclipse.doFirst {
+	println 'do first task'
+}

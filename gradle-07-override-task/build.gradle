@@ -1,3 +1,5 @@
+// you also can override plugin tasks 
+
 defaultTasks 'clean'
 
 task clean {
@@ -7,4 +9,4 @@ task clean {
 }
 
 clean.doFirst { println 'Another action applied to the "clean" task' }
-clean << { println 'Another doLast action is also applied' } 
+clean << { println 'Another doLast action is also applied' }
