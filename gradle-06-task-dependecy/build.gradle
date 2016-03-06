@@ -1,0 +1,21 @@
+// "<<" is a shortcut to "doLast"
+
+defaultTasks 'clean', 'compile'
+
+task clean << {
+	println 'Executing the clean task'
+}
+
+task compile << {
+	println 'Executing the compile task'
+}
+
+task other(dependsOn: 'compile') << {
+	println "I'm not a default task!"
+}
+
+task cleanOther << {
+	println "I want to clean up and compile before running!"
+}
+
+cleanOther.dependsOn clean, compile 
