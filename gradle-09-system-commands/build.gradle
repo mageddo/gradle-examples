@@ -1,0 +1,17 @@
+defaultTasks 'list'
+
+import org.apache.tools.ant.taskdefs.condition.Os
+
+task list {
+	def r;
+	if(Os.isFamily(Os.FAMILY_WINDOWS)) {
+		r = ['dir'].execute()
+	}else{
+		r = [
+			'ls', '-alh'
+		].execute()
+	}
+	println "============"
+	println r.text
+	println "============"
+}
