@@ -37,6 +37,26 @@ task list2 (type:Exec){
 	}
 }
 
+
+task run(type: Exec){
+        commandLine  "ls", "-lha"
+ 
+}
+
+
+task main() {
+
+        doFirst {
+
+                run.execute()
+                def r = ['sh', '-c', 'uname -r'].execute()
+                println r
+
+        }
+
+}
+
+
 task printList2 (dependsOn: list2)<<{
 	println '============='
 	println 'the output is'
