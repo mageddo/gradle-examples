@@ -1,2 +1,4 @@
-def v = (properties["failFast"] ?: System.getenv("FAILFAST")) == "1"
-println("Result value is: ${v}")
+task printParameter(){
+    def v = (properties["failFast"] ?: System.getenv("FAILFAST")) == "1"
+    println("Result value is: ${v}")
+}
